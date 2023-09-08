@@ -1,0 +1,33 @@
+; the memory map:
+; 0000 - zero page (256 bytes)
+; 0100 - stack (256 bytes)
+; 0200 - start of RAM (~ 60kb)
+; EFFF - end of RAM
+; F000 - start of device space (2kb)
+; F7FF - end of device space
+; F800 - start of ROM (2kb)
+; FFFF - end of ROM
+
+; start of the boot loader object
+J bootloader
+; the boot loader ROM is in the last 2KB of memory
+O F800
+
+; the boot loader entry point.
+G bootentry
+Q 4C         ; JMP absolute to entry - infinite loop
+RA bootentry
+
+; the NMI interrupt handler - not yet implemented.
+G isr_nmi
+Q 40 ; rti
+
+; the IRQ interrupt handler - not yet implemented.
+G isr_irq
+Q 40 ; rti
+
+; define the vector table for the 65C02
+A FFFC
+RA bootentry ; the reset handler
+RA isr_nmi   ; the NMI handler
+RA isr_irq   ; the IRQ handler
