@@ -15,8 +15,9 @@ O F800
 
 ; the boot loader entry point.
 G bootentry
-Q 4C         ; JMP absolute to entry - infinite loop
-RA bootentry
+L bootloop
+Q 80         ; BRA to entry - infinite loop
+RR bootloop
 
 ; the NMI interrupt handler - not yet implemented.
 G isr_nmi
