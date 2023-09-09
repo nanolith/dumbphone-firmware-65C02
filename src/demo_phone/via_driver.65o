@@ -1,0 +1,41 @@
+; the simplified VIA stands in for the 65C22. It does not attempt to emulate the
+; 65C22 but rather to provide similar functionality.
+;
+; This virtual device has two ports, just like a real VIA. Each port has eight
+; I/O pins. These pins are used for handling button inputs, for driving the
+; display, and for driving the ringer.
+;
+; This virtual device also has two timers that can be configured to interrupt
+; the CPU with either one-shot or free running interrupts.
+;
+; Registers:
+; 0xF600 - ORB / IRB
+; 0xF601 - ORA / IRA
+; 0xF602 - DDRB
+; 0xF603 - DDRA
+; 0xF604 - TIC1-L
+; 0xF605 - TIC1-H
+; 0xF606 - T1L-L
+; 0xF607 - T1L-H
+; 0xF608 - T2C-L
+; 0xF609 - T2C-H
+; 0xF60A - SR
+; 0xF60B - ACR
+; 0xF60C - PCR
+; 0xF60D - IFR
+; 0xF60E - IER
+; 0xF60F - ORA / IRA w/o handshake
+
+J via_driver
+
+; initialize the VIA
+
+G via_init
+
+Q 60        ; RTS - return from subroutine
+
+; check for VIA related events
+
+G via_handler
+
+Q 60        ; RTS - return from subroutine
