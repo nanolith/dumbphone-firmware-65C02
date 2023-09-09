@@ -1,0 +1,50 @@
+; start of the demo phone object
+J demo_phone
+; The demo phone starts right at address 0200
+O 0200
+
+; the boot loader entry point.
+G demoentry
+
+; Disable interrupts; we use WAI below
+Q 78         ; SEI - set interrupt disable flag
+
+; Initialize the Human Machine Interface
+Q 20         ; JSR to hmi_init
+RA hmi_init
+
+; Initialize the ringer interface
+Q 20         ; JSR to ringer_init
+RA ringer_init
+
+; Initialize the display
+Q 20         ; JSR to display_init
+RA display_init
+
+; Initialize the cellular modem
+Q 20         ; JSR to modem_init
+RA modem_init
+
+L demoloop
+
+Q CB         ; WAI wait for interrupts
+
+Q 20         ; JSR to check the modem device
+RA modem_handler
+
+Q 20         ; JSR to check the hmi device
+RA hmi_handler
+
+Q 20         ; JSR to check the ringer device
+RA ringer_handler
+
+Q 80         ; BRA to demoloop - infinite loop
+RR demoloop
+
+; the NMI interrupt handler - not implemented in the demo.
+G isr_nmi
+Q 40 ; rti
+
+; the IRQ interrupt handler - not implemented in the demo.
+G isr_irq
+Q 40 ; rti

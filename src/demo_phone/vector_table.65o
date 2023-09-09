@@ -1,0 +1,7 @@
+J vector_table
+
+; define the vector table for the 65C02
+A FFFC
+RA demoentry ; the reset handler
+RA isr_nmi   ; the NMI handler
+RA isr_irq   ; the IRQ handler

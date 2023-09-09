@@ -1,0 +1,13 @@
+J hmi_driver
+
+; initialize the button inputs on the VIA for the HMI
+
+G hmi_init
+
+Q 60        ; RTS - return from subroutine
+
+; check for HMI related events
+
+G hmi_handler
+
+Q 60        ; RTS - return from subroutine

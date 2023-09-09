@@ -1,0 +1,16 @@
+J modem_driver
+
+; initialize the UART to run at 9600 N 8 1
+; set up the VIA to interrupt when the UART has data
+; send the initialization commands to the modem
+; wait for a response
+
+G modem_init
+
+Q 60        ; RTS - return from subroutine
+
+; check for modem related events
+
+G modem_handler
+
+Q 60        ; RTS - return from subroutine
