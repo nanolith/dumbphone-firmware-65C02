@@ -1,0 +1,7 @@
+J display_driver
+
+; initialize the outputs on the VIA for the display
+
+G display_init
+
+Q 60        ; RTS - return from subroutine

@@ -1,0 +1,19 @@
+J ringer_driver
+
+; initialize the outputs on the VIA for turning on and off the ringer
+
+G ringer_init
+
+Q 60        ; RTS - return from subroutine
+
+G ringer_on
+
+Q 60        ; RTS - return from subroutine
+
+G ringer_off
+
+Q 60        ; RTS - return from subroutine
+
+G ringer_handler
+
+Q 60        ; RTS - return from subroutine
