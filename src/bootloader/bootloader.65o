@@ -1,9 +1,9 @@
 ; the memory map:
 ; 0000 - zero page (256 bytes)
 ; 0100 - stack (256 bytes)
-; 0200 - start of RAM (~ 60kb)
-; EFFF - end of RAM
-; F000 - start of device space (2kb)
+; 0200 - start of RAM (~ 61kb)
+; F5FF - end of RAM
+; F600 - start of device space (512 bytes)
 ; F7FF - end of device space
 ; F800 - start of ROM (2kb)
 ; FFFF - end of ROM
