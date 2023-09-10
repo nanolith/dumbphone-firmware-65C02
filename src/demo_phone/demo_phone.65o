@@ -29,6 +29,9 @@ L demoloop
 
 Q CB         ; WAI wait for interrupts
 
+Q 20         ; JSR to check the VIA device
+RA via_handler
+
 Q 20         ; JSR to check the modem device
 RA modem_handler
 
