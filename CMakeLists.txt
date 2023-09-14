@@ -20,3 +20,8 @@ find_package(jlink65c02 REQUIRED)
 AUX_SOURCE_DIRECTORY(src/demo_phone/virtual_devices DEMO_PHONE_VIRTUAL_SOURCES)
 
 ADD_LIBRARY(demophone_virtual_devices STATIC ${DEMO_PHONE_VIRTUAL_SOURCES})
+TARGET_COMPILE_OPTIONS(
+    demophone_virtual_devices
+        PRIVATE -O3 ${JEMU65C02_CFLAGS} -Wall -Werror -Wextra -Wpedantic
+                -Wno-unused-command-line-argument)
+
