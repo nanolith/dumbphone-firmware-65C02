@@ -31,11 +31,11 @@ struct virtual_device_entry
 };
 
 /**
- * \brief The virtual device instance.
+ * \brief The virtual device manager instance.
  */
-typedef struct virtual_device virtual_device;
+typedef struct virtual_device_manager virtual_device_manager;
 
-struct virtual_device
+struct virtual_device_manager
 {
     virtual_device_entry* devices;
     size_t device_entries;
@@ -43,25 +43,25 @@ struct virtual_device
 };
 
 /**
- * \brief Create a virtual device instance.
+ * \brief Create a virtual device manager instance.
  *
  * \note On success, the caller is given ownership of the virtual device
  * instance and must release it by calling \ref virtual_device_release when it
  * is no longer needed.
  *
- * \param virt              Pointer to the virtual device instance pointer to
- *                          set to the created instance on success.
+ * \param virt              Pointer to the virtual device manager instance
+ *                          pointer to set to the created instance on success.
  *
  * \returns a status code indicating success or failure.
  *      - STATUS_SUCCESS on success.
  *      - a non-zero error code on failure.
  */
 JEMU_SYM(status) FN_DECL_MUST_CHECK
-virtual_device_create(
-    virtual_device** virt);
+virtual_device_manager_create(
+    virtual_device_manager** virt);
 
 /**
- * \brief Release a virtual device instance.
+ * \brief Release a virtual device manager instance.
  *
  * \note After this call, the instance pointer is no longer valid.
  *
@@ -72,7 +72,7 @@ virtual_device_create(
  *      - a non-zero error code on failure.
  */
 JEMU_SYM(status) FN_DECL_MUST_CHECK
-virtual_device_release(virtual_device* virt);
+virtual_device_manager_release(virtual_device_manager* virt);
 
 /* C++ compatibility. */
 # ifdef   __cplusplus
