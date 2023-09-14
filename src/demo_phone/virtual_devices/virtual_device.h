@@ -9,8 +9,7 @@
 
 #pragma once
 
-#include <jemu65c02/function_decl.h>
-#include <jemu65c02/status.h>
+#include <jemu65c02/jemu65c02.h>
 
 /* C++ compatibility. */
 # ifdef   __cplusplus
@@ -18,9 +17,30 @@ extern "C" {
 # endif /*__cplusplus*/
 
 /**
+ * \brief A virtual device entry.
+ */
+typedef struct virtual_device_entry virtual_device_entry;
+
+struct virtual_device_entry
+{
+    uint16_t register_low;
+    uint16_t register_high;
+    void* context;
+    JEMU_SYM(j65c02_read_fn) read;
+    JEMU_SYM(j65c02_write_fn) write;
+};
+
+/**
  * \brief The virtual device instance.
  */
 typedef struct virtual_device virtual_device;
+
+struct virtual_device
+{
+    virtual_device_entry* devices;
+    size_t device_entries;
+    size_t max_device_entries;
+};
 
 /**
  * \brief Create a virtual device instance.
