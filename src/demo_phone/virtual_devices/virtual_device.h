@@ -40,6 +40,20 @@ JEMU_SYM(status) FN_DECL_MUST_CHECK
 virtual_device_create(
     virtual_device** virt);
 
+/**
+ * \brief Release a virtual device instance.
+ *
+ * \note After this call, the instance pointer is no longer valid.
+ *
+ * \param virt              The instance to release.
+ *
+ * \returns a status code indicating success or failure.
+ *      - STATUS_SUCCESS on success.
+ *      - a non-zero error code on failure.
+ */
+JEMU_SYM(status) FN_DECL_MUST_CHECK
+virtual_device_release(virtual_device* virt);
+
 /* C++ compatibility. */
 # ifdef   __cplusplus
 }
