@@ -97,6 +97,18 @@ virtual_device_manager_device_register(
     JEMU_SYM(j65c02_write_fn) write, uint16_t register_low,
     uint16_t register_high, void* context);
 
+/**
+ * \brief Return true if the given address is covered by the virtual device map.
+ *
+ * \param virt              The virtual device manager instance.
+ * \param address           The memory address.
+ *
+ * \returns true if the given memory address is covered by the virtual device
+ * map.
+ */
+bool virtual_device_manager_address_mapped(
+    const virtual_device_manager* virt);
+
 /* C++ compatibility. */
 # ifdef   __cplusplus
 }
