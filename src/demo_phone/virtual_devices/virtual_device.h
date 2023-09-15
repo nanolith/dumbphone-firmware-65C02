@@ -109,6 +109,21 @@ virtual_device_manager_device_register(
 bool virtual_device_manager_address_mapped(
     const virtual_device_manager* virt);
 
+/**
+ * \brief Given an opaque reference to a device manager, perform the JEMU65C02
+ * read function for the device manager.
+ *
+ * \param virt              An opaque reference to the device manager instance.
+ * \param addr              The address for the read operation.
+ * \param byte              Pointer to receive the byte read.
+ *
+ * \returns a status code indicating success or failure.
+ *      - STATUS_SUCCESS on success.
+ *      - a non-zero error code on failure.
+ */
+JEMU_SYM(status) virtual_device_manager_emu_read_callback(
+    void* virt, uint16_t addr, uint8_t* byte);
+
 /* C++ compatibility. */
 # ifdef   __cplusplus
 }
