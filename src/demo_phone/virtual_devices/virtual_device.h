@@ -74,6 +74,29 @@ virtual_device_manager_create(
 JEMU_SYM(status) FN_DECL_MUST_CHECK
 virtual_device_manager_release(virtual_device_manager* virt);
 
+/**
+ * \brief Register a device in the virtual device manager.
+ *
+ * \param virt              The virtual device manager instance.
+ * \param read              The read function for the virtual device.
+ * \param write             The write function for the virtual device.
+ * \param register_low      The lowest register number in the contiguous memory
+ *                          mapped register space for this device.
+ * \param register_high     The highest register number in the contiguous memory
+ *                          mapped register space for this device.
+ * \param context           The user context for the virtual device read/write
+ *                          callbacks.
+ *
+ * \returns a status code indicating success or failure.
+ *      - STATUS_SUCCESS on success.
+ *      - a non-zero error code on failure.
+ */
+JEMU_SYM(status) FN_DECL_MUST_CHECK
+virtual_device_manager_device_register(
+    virtual_device_manager* virt, JEMU_SYM(j65c02_read_fn) read,
+    JEMU_SYM(j65c02_write_fn) write, uint16_t register_low,
+    uint16_t register_high, void* context);
+
 /* C++ compatibility. */
 # ifdef   __cplusplus
 }
