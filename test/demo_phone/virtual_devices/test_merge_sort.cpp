@@ -25,3 +25,17 @@ TEST(midpoint)
     TEST_EXPECT(3 == midpoint(2, 5));
     TEST_EXPECT(4 == midpoint(2, 6));
 }
+
+/**
+ * \brief Test the register range compare function.
+ */
+TEST(register_range_compare)
+{
+    TEST_EXPECT(COMPARE_RESULT_LESSER == register_range_compare(1,2,3,4));
+    TEST_EXPECT(COMPARE_RESULT_GREATER == register_range_compare(3,4,1,2));
+    TEST_EXPECT(COMPARE_RESULT_EQUAL == register_range_compare(0,0,0,0));
+    TEST_EXPECT(COMPARE_RESULT_INTERSECTING == register_range_compare(1,5,3,4));
+    TEST_EXPECT(COMPARE_RESULT_INTERSECTING == register_range_compare(3,4,1,5));
+    TEST_EXPECT(COMPARE_RESULT_INTERSECTING == register_range_compare(1,3,2,2));
+    TEST_EXPECT(COMPARE_RESULT_INTERSECTING == register_range_compare(1,3,2,5));
+}
