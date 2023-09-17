@@ -10,6 +10,7 @@
 #pragma once
 
 #include <jemu65c02/jemu65c02.h>
+#include <stddef.h>
 
 /* C++ compatibility. */
 # ifdef   __cplusplus
