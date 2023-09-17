@@ -139,6 +139,19 @@ JEMU_SYM(status) virtual_device_manager_emu_read_callback(
 JEMU_SYM(status) virtual_device_manager_emu_write_callback(
     void* virt, uint16_t addr, uint8_t byte);
 
+/**
+ * \brief The sort command must be called before emulation starts, as registered
+ * devices are appended to the device array in an unsorted manner.
+ *
+ * \param virt              The virtual machine manager instance to sort.
+ *
+ * \returns a status code indicating success or failure.
+ *      - STATUS_SUCCESS on success.
+ *      - a non-zero error code on failure.
+ */
+JEMU_SYM(status) virtual_device_manager_sort(
+    virtual_device_manager* virt);
+
 /* C++ compatibility. */
 # ifdef   __cplusplus
 }
