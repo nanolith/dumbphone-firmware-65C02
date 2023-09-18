@@ -153,6 +153,18 @@ JEMU_SYM(status) virtual_device_manager_emu_write_callback(
 JEMU_SYM(status) virtual_device_manager_sort(
     virtual_device_manager* virt);
 
+/**
+ * \brief Given a sorted virtual device manager and a register location, find a
+ * device entry or NULL if no device entry was found.
+ *
+ * \param virt              The virtual device manager instance.
+ * \param reg               The register location.
+ *
+ * \returns the virtual device entry for this register location or NULL.
+ */
+virtual_device_entry* virtual_device_manager_device_find(
+    virtual_device_manager* virt, uint16_t reg);
+
 /* C++ compatibility. */
 # ifdef   __cplusplus
 }
