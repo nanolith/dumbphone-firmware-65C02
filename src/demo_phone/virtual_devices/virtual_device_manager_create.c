@@ -37,7 +37,7 @@ virtual_device_manager_create(
 
     /* allocate memory for the instance. */
     tmp = (virtual_device_manager*)malloc(sizeof(*tmp));
-    if (NULL != tmp)
+    if (NULL == tmp)
     {
         retval = JEMU_ERROR_OUT_OF_MEMORY;
         goto done;
