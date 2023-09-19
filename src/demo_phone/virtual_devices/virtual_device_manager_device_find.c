@@ -70,7 +70,7 @@ static virtual_device_entry* binary_search(
         /* should we search the lower range? */
         if (reg < array[mid].register_low && mid > 0)
         {
-            return binary_search(array, mid - 1, reg);
+            return binary_search(array, mid, reg);
         }
         /* should we search the upper range? */
         else if (reg > array[mid].register_high && mid < entries)
