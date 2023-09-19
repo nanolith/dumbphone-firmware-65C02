@@ -18,7 +18,7 @@
 JEMU_IMPORT_jemu65c02;
 
 /* forward decls. */
-status merge_sort(
+static status merge_sort(
     virtual_device_entry* array, virtual_device_entry* scratch, size_t entries);
 
 /**
@@ -75,7 +75,7 @@ done:
  * This function performs a recursive merge sort on the array in-situ, using the
  * scratch array as a temporary buffer.
  */
-status merge_sort(
+static status merge_sort(
     virtual_device_entry* array, virtual_device_entry* scratch, size_t entries)
 {
     status retval;
