@@ -68,7 +68,7 @@ static virtual_device_entry* binary_search(
         size_t mid = midpoint(0, entries);
 
         /* should we search the lower range? */
-        if (array[mid].register_low < reg && mid > 0)
+        if (reg < array[mid].register_low && mid > 0)
         {
             return binary_search(array, mid - 1, reg);
         }
