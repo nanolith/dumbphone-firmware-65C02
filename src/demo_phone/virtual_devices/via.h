@@ -31,7 +31,7 @@ extern "C" {
 #define VIA_REGISTER_PCR            0xF60C
 #define VIA_REGISTER_IFR            0xF60D
 #define VIA_REGISTER_IER            0xF60E
-#define VIA_REGISTER_IORA           0xF60F
+#define VIA_REGISTER_IORA2          0xF60F
 
 /**
  * \brief The VIA virtual device.
@@ -40,7 +40,23 @@ typedef struct virtual_device_via virtual_device_via;
 
 struct virtual_device_via
 {
+    uint16_t ddrb;
+    uint16_t ddra;
 };
+
+/**
+ * \brief Create a virtual VIA device for the demo phone.
+ *
+ * \param via           Pointer to the virtual VIA device instance pointer to
+ *                      be set to the created instance on success.
+ *
+ * \returns a status code indicating success or failure.
+ *      - STATUS_SUCCESS on success.
+ *      - a non-zero error code on failure.
+ */
+JEMU_SYM(status) FN_DECL_MUST_CHECK
+virtual_device_via_create(
+    virtual_device_via** via);
 
 /* C++ compatibility. */
 # ifdef   __cplusplus
