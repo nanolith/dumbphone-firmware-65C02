@@ -72,6 +72,20 @@ virtual_device_via_create(
 JEMU_SYM(status) FN_DECL_MUST_CHECK
 virtual_device_via_release(virtual_device_via* via);
 
+/**
+ * \brief Read callback for the VIA device.
+ *
+ * \param via           An opaque reference to the VIA instance.
+ * \param addr          The address for the read operation.
+ * \param byte          Pointer to receive the byte read.
+ *
+ * \returns a status code indicating success or failure.
+ *      - STATUS_SUCCESS on success.
+ *      - a non-zero error code on failure.
+ */
+JEMU_SYM(status) virtual_device_via_read_callback(
+    void* via, uint16_t addr, uint8_t* byte);
+
 /* C++ compatibility. */
 # ifdef   __cplusplus
 }
