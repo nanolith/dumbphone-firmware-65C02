@@ -16,8 +16,8 @@
 extern "C" {
 # endif /*__cplusplus*/
 
-#define VIA_REGISTER_ORB            0xF600
-#define VIA_REGISTER_ORA            0xF601
+#define VIA_REGISTER_IORB           0xF600
+#define VIA_REGISTER_IORA           0xF601
 #define VIA_REGISTER_DDRB           0xF602
 #define VIA_REGISTER_DDRA           0xF603
 #define VIA_REGISTER_T1C1L          0xF604
@@ -31,7 +31,16 @@ extern "C" {
 #define VIA_REGISTER_PCR            0xF60C
 #define VIA_REGISTER_IFR            0xF60D
 #define VIA_REGISTER_IER            0xF60E
-#define VIA_REGISTER_ORA            0xF60F
+#define VIA_REGISTER_IORA           0xF60F
+
+/**
+ * \brief The VIA virtual device.
+ */
+typedef struct virtual_device_via virtual_device_via;
+
+struct virtual_device_via
+{
+};
 
 /* C++ compatibility. */
 # ifdef   __cplusplus
