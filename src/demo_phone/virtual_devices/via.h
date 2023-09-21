@@ -33,6 +33,9 @@ extern "C" {
 #define VIA_REGISTER_IER            0xF60E
 #define VIA_REGISTER_IORA2          0xF60F
 
+#define VIA_DDR_PIN_DIR_INPUT            0
+#define VIA_DDR_PIN_DIR_OUTPUT           1
+
 /**
  * \brief The VIA virtual device.
  */
